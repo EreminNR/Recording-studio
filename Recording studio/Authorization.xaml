@@ -1,0 +1,152 @@
+﻿<Page x:Class="Recording_studio.Authorization"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Recording_studio"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="Authorization">
+
+  
+        <Page.Resources>
+            <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+            <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+            <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="AllowDrop" Value="true"/>
+                <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+                <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="BorderBrush" TargetName="border" Value="#FF27262C"/>
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="true">
+                                    <Setter Property="BorderBrush" TargetName="border" Value="#FF27262C"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <MultiTrigger>
+                        <MultiTrigger.Conditions>
+                            <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                            <Condition Property="IsSelectionActive" Value="false"/>
+                        </MultiTrigger.Conditions>
+                        <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                    </MultiTrigger>
+                </Style.Triggers>
+            </Style>
+
+        </Page.Resources>
+        <Grid Background="#FF27262C">
+            <Label Content="Авторизация" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontFamily="Courier New" FontSize="30" Margin="326,172,0,0" FontWeight="Bold"/>
+            <TextBox HorizontalAlignment="Left" Margin="326,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" Height="27" Visibility="Visible" Background="#FF27262C" Foreground="White" BorderBrush="{x:Null}" x:Name="SearchTermTextBox" PreviewKeyDown="SearchTermTextBox_PreviewKeyDown" />
+            <TextBlock IsHitTestVisible="False" Text="Логин" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="330,245,0,0" Foreground="DarkGray">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBox HorizontalAlignment="Left" Margin="326,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" Height="27" Visibility="Visible" Background="#FF27262C" Foreground="White" BorderBrush="{x:Null}" x:Name="SearchTermTextBox1" PreviewKeyDown="SearchTermTextBox1_PreviewKeyDown"/>
+            <TextBlock IsHitTestVisible="False" Text="Пароль" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="330,292,0,0" Foreground="DarkGray">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox1}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="svg19" Height="2" Margin="330,275,446,307">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0"/>
+                </Canvas.RenderTransform>
+                <Canvas.Resources/>
+                <!--Unknown tag: sodipodi:namedview-->
+                <Canvas Name="g76">
+                    <Line xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" X1="0" Y1="1" X2="531" Y2="1" Name="line17" StrokeThickness="2" Stroke="#FFFFFFFF" Width="271" Canvas.Left="-2" Canvas.Top="-4"/>
+                    <Line X1="0" Y1="1" X2="531" Y2="1" x:Name="line17_Copy" StrokeThickness="2" Stroke="#FFFFFFFF" Width="271" Canvas.Left="-2" Canvas.Top="43"/>
+                </Canvas>
+            </Canvas>
+            <Button Content="Войти" HorizontalAlignment="Left" Margin="327,355,0,0" VerticalAlignment="Top" Width="271" Height="27" Background="#FF4044ED" BorderBrush="#FF4044ED" Foreground="White" FontFamily="Courier New" Click="Button_Click"/>
+            <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="svg202" Width="100" Height="100
+                
+                ">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0"/>
+                </Canvas.RenderTransform>
+                <Canvas.Resources/>
+                <!--Unknown tag: sodipodi:namedview-->
+                <Canvas Name="g279">
+                    <Ellipse xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-792" Canvas.Top="-200" Width="500" Height="500" Name="circle200" Fill="#FF4044ED" Visibility="Visible"/>
+                </Canvas>
+            </Canvas>
+            <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="svg272" Width="76" Height="76">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0"/>
+                </Canvas.RenderTransform>
+                <Canvas.Resources/>
+                <!--Unknown tag: sodipodi:namedview-->
+                <Canvas Name="g287">
+                    <Ellipse xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-387" Canvas.Top="-92" Width="50" Height="50" Name="circle270" Fill="#FF93DFFF">
+                        <Ellipse.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="-1"/>
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+                </Canvas>
+            </Canvas>
+            <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="svg312" Margin="683,397,-145,-240">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0"/>
+                </Canvas.RenderTransform>
+                <Canvas.Resources/>
+                <!--Unknown tag: sodipodi:namedview-->
+                <Canvas Name="g323">
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path306" Fill="#804044ED" Data="M 0 0 280.548 78.757 72.069 282.34 Z" Canvas.Left="41" Canvas.Top="-72"/>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path308" Fill="#804044ED" Data="M 105.137 94.067 385.685 172.824 177.206 376.407 Z" Canvas.Left="41" Canvas.Top="-72"/>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path310" Fill="#804044ED" Data="M 214.238 186.893 494.785 265.649 286.306 469.233 Z" Canvas.Left="41" Canvas.Top="-72"/>
+                </Canvas>
+            </Canvas>
+            <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="svg343" Margin="0,0,402,519">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0"/>
+                </Canvas.RenderTransform>
+                <Canvas.Resources/>
+                <!--Unknown tag: sodipodi:namedview-->
+                <Canvas Name="g350">
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path341" Fill="#FF4044ED" Data="m 1.756531 477.88562 c 3.70717 -35.151 10.88432 -70.006 21.53152 -104.009 L 373.87665 23.28802 c 34.003 -10.6471 68.858 -17.82429 104.009 -21.53147 z m 164.999119 446.013 c 14.344 13.553 29.253 26.162 44.649 37.829 l 750.323 -750.323 c -11.667 -15.396 -24.276 -30.305 -37.829 -44.649 z m 154.039 101.81198 c -18.67 -8.11 -36.972 -17.33 -54.805 -27.67298 l 732.048 -732.048 c 10.34305 17.833 19.56305 36.135 27.67305 54.805 z m 66.976 23.92 c 22.354 6.34 45.04 11.2 67.902 14.57 L 1064.2007 455.67262 c -3.37 -22.862 -8.23 -45.548 -14.57 -67.902 z m 244.455 11.39 c -30.201 5.59 -60.788 8.56 -91.401 8.93 L 1069.9507 540.82462 c -0.37 30.613 -3.34 61.2 -8.93 91.401 z m 135.057 -44.16 c 52.706 -25.44198 102.107 -60.02498 145.83 -103.74798 43.723 -43.723 78.306 -93.124 103.74805 -145.83 z m 109.773 -894.15598 -754.351 754.351 c -12.717 -15.242 -24.454999 -31.024 -35.214199 -47.264 L 829.79165 87.49042 c 16.24 10.7592 32.022 22.4972 47.264 35.2142 z M 54.273051 772.11462 772.11465 54.27302 c -18.911 -9.3664 -38.26 -17.5469 -57.937 -24.5417 L 29.731351 714.17762 c 6.9948 19.677 15.1753 39.026 24.5417 57.937 z m -44.3921 -128.98 C 4.930931 619.14762 1.637291 594.88762 0 570.53662 L 570.53665 0 c 24.351 1.6373 48.611 4.93095 72.597 9.88092 z" Height="466" Stretch="Fill" Width="468" Canvas.Left="802.5" Canvas.Top="-258"/>
+                </Canvas>
+            </Canvas>
+            <TextBlock HorizontalAlignment="Left" Margin="416,387,0,0" TextWrapping="Wrap" Text="Регистрация" VerticalAlignment="Top" FontFamily="Courier New" Foreground="#FF999999" FontStyle="Italic" FontSize="14" x:Name="myTextBlock" PreviewMouseDown="myTextBlock_PreviewMouseDown"/>
+        </Grid>
+
+   
+
+</Page>

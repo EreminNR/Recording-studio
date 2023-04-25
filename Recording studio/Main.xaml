@@ -1,0 +1,36 @@
+﻿<Page x:Class="Recording_studio.Main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Recording_studio"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="Main">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="4"
+                                Background="{TemplateBinding Background}">
+
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid Background="#FF27262C">
+        <TextBlock HorizontalAlignment="Left" Margin="56,35,0,0" TextWrapping="Wrap" Text="Главная" VerticalAlignment="Top" Foreground="White" FontFamily="Courier New" FontSize="14" RenderTransformOrigin="0.17,0.665" 
+                   />
+        <TextBlock HorizontalAlignment="Left" Margin="173,35,0,0" TextWrapping="Wrap" Text="Услуги" VerticalAlignment="Top" Foreground="White" FontFamily="Courier New" FontSize="14" PreviewMouseDown="TextBlock_PreviewMouseDown"/>
+        <Button Content="Личный кабинет" Margin="832,29,56,0" VerticalAlignment="Top" Background="#FF09A66D" Foreground="White" BorderBrush="#FF09A66D" Height="26" Click="Button_Click"/>
+        <Image HorizontalAlignment="Left" Height="567" Margin="0,87,0,0" VerticalAlignment="Top" Width="1387" Source="/148519-svet-biryuza-studiya_zvukozapisi-sinij-steklo-1920x1080.jpg"/>
+        <Label Content="Recording Studio - &#xA;профессиональная &#xD;&#xA;студия &#xD;&#xA;звукозаписи" HorizontalAlignment="Left" Margin="85,182,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="30"/>
+        <Label Content="ЗАПИСАТЬ ПЕСНЮ, АРАНЖИРОВКИ, &#xD;&#xA;ПЕСНИ ПОД &#xD;&#xA;КЛЮЧ, СЕРТИФИКАТЫ В ПОДАРОК" HorizontalAlignment="Left" Margin="85,357,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="15" Width="505"/>
+
+    </Grid>
+</Page>
