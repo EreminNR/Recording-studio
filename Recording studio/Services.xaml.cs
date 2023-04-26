@@ -20,11 +20,15 @@ namespace Recording_studio
     /// </summary>
     public partial class Services : Page
     {
+        public StudioEntities _context = new StudioEntities();
+        public ListView list;
         public Services()
         {
             InitializeComponent();
             var services = StudioEntities.GetContext().Услуги.ToList();
             ServicesList.ItemsSource = services;
+            ServicesList.ItemsSource = _context.Услуги.ToList();
+            list = ServicesList;
         }
 
         private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -32,14 +36,6 @@ namespace Recording_studio
             NavigationService.Navigate(new Main());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Personal());
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Recording());
-        }
+        
     }
 }

@@ -74,9 +74,6 @@ namespace Recording_studio
             NavigationService.Navigate(new admin2());
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new admin3());
-        }
+        
     }
 }

@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
+using Microsoft.Win32;
+using System.IO;
 
 namespace Recording_studio
 {
@@ -22,8 +25,9 @@ namespace Recording_studio
     /// </summary>
     public partial class admin2 : Page
     {
-         
+        private StudioEntities _context = new StudioEntities();
 
+        private byte[] image;
         public admin2()
         {
             InitializeComponent();
@@ -56,11 +60,7 @@ namespace Recording_studio
         {
             NavigationService.Navigate(new admin());
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new admin3());
-        }
+        
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
@@ -70,7 +70,7 @@ namespace Recording_studio
                 {
                     if (text.Text.Length >= 5 && text1.Text.Length >= 5)
                     {
-                        Услуги услуги = new Услуги { Название = text1.Text, Описание = text1.Text, Цена = Convert.ToInt32(text3.Text)};
+                        Услуги услуги = new Услуги { Название = text1.Text, Описание = text1.Text, Цена = Convert.ToInt32(text3.Text), Изображение = image};
                         db.Услуги.Add(услуги);
                         db.SaveChanges();
                         MessageBox.Show("Данные внесены");
@@ -103,6 +103,7 @@ namespace Recording_studio
                         услуги.Название = text4.Text;
                         услуги.Описание = text5.Text;
                         услуги.Цена = Convert.ToDecimal(text6.Text);
+                        услуги.Изображение = image;
                         db.SaveChanges();
                         MessageBox.Show("Изменения внесены успешно!");
                     }
@@ -149,6 +150,46 @@ namespace Recording_studio
 
             }
             catch { MessageBox.Show("Укажите корректный id!"); }
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            string path;
+            if ((bool)openFileDialog.ShowDialog())
+            {
+                path = openFileDialog.FileName;
+                this.image = System.IO.File.ReadAllBytes(path);
+                MemoryStream ms = new MemoryStream(image);
+                ImgBook.Source = BitmapFrame.Create(ms, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+            }
+        }
+
+        public void AddServices(string Name, string description, byte[] image, int Price)
+        {
+            Услуги услуги = new Услуги() { Название = Name, Описание = description, Цена = Price, Изображение = image};
+            _context.Услуги.Add(услуги);
+            _context.SaveChanges();
+        }
+
+        public static void EditServices(int id, string Name, string Discription, byte[] image, int Price)
+        {
+            StudioEntities _context = new StudioEntities();
+            Услуги услуги = _context.Услуги.FirstOrDefault(x => x.IDУслуги == id);
+            услуги.Название = Name;
+            услуги.Описание = Discription;
+            услуги.Цена = Convert.ToDecimal(Price);
+            услуги.Изображение = image;
+
+            _context.SaveChanges();
+        }
+
+        public static void DeleteServices(int id)
+        {
+            StudioEntities _context = new StudioEntities();
+            Услуги услуги = _context.Услуги.FirstOrDefault(x => x.IDУслуги == id);
+            _context.Услуги.Remove(услуги);
+            _context.SaveChanges();
         }
     }
 }

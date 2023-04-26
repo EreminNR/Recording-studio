@@ -20,11 +20,7 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button Content="Записи" HorizontalAlignment="Left" VerticalAlignment="Top" Height="68" Width="280" Background="#FF27262C" Foreground="White" BorderBrush="#FF27262C" Margin="720,0,0,0" FontFamily="Courier New" FontSize="20" Click="Button_Click_1">
-            <Button.Effect>
-                <DropShadowEffect/>
-            </Button.Effect>
-        </Button>
+        
         <DataGrid x:Name="MyData" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,73,0,300" Background="#FF27262C"/>
         <TextBox x:Name="text" HorizontalAlignment="Left" Margin="10,322,0,0" TextWrapping="Wrap" Text="Название" VerticalAlignment="Top" Width="296" Height="27"/>
         <TextBox x:Name="text1" HorizontalAlignment="Left" Margin="344,322,0,0" TextWrapping="Wrap" Text="Описание" VerticalAlignment="Top" Width="296" Height="27"/>
@@ -38,6 +34,10 @@
         <Button Content="Показать" HorizontalAlignment="Left" Margin="690,483,0,0" VerticalAlignment="Top" Width="120" Height="29" Background="#FF4044ED" BorderBrush="#FF4044ED" Foreground="White" FontFamily="Courier New" FontSize="14" Click="Button_Click_4"/>
         <ComboBox x:Name="cb2" HorizontalAlignment="Left" Margin="10,537,0,0" VerticalAlignment="Top" Width="120" Height="29"/>
         <Button Content="Удалить" HorizontalAlignment="Left" Margin="163,537,0,0" VerticalAlignment="Top" Width="117" Height="29" Background="#FF4044ED" BorderBrush="#FF4044ED" Foreground="White" FontFamily="Courier New" FontSize="14" Click="Button_Click_5"/>
-
+        <Button Content="Добавить картинку" HorizontalAlignment="Left" Margin="672,321,0,0" VerticalAlignment="Top" Width="156" Height="29" Background="#FF4044ED" BorderBrush="#FF4044ED" Foreground="White" FontFamily="Courier New" FontSize="14" Click="Button_Click_6"/>
+        <Grid Margin="840,462,4,0">
+            <Image x:Name="ImgBook" Grid.RowSpan="4" Grid.Row="6" Grid.Column="1" Source="{Binding ImageSource}" HorizontalAlignment="Center"
+VerticalAlignment="Center"></Image>
+        </Grid>
     </Grid>
 </Page>

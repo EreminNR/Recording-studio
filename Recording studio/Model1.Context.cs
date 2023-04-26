@@ -17,16 +17,17 @@ namespace Recording_studio
     
     public partial class StudioEntities : DbContext
     {
-        private static StudioEntities _instance;
+        private static StudioEntities _dbStudioEntities;
         public StudioEntities()
             : base("name=StudioEntities")
         {
         }
+
         public static StudioEntities GetContext()
         {
-            if (_instance == null)
+            if (_dbStudioEntities == null)
                 return new StudioEntities();
-            return _instance;
+            return _dbStudioEntities;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

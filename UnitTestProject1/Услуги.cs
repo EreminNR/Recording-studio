@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Recording_studio
+namespace UnitTestProject1
 {
     using System;
     using System.Collections.Generic;

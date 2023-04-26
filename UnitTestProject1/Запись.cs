@@ -7,26 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Recording_studio
+namespace UnitTestProject1
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Услуги
+    public partial class Запись
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Услуги()
-        {
-            this.Запись = new HashSet<Запись>();
-        }
-    
+        public int IDЗаписи { get; set; }
+        public int IDПользователя { get; set; }
         public int IDУслуги { get; set; }
-        public string Название { get; set; }
-        public string Описание { get; set; }
-        public decimal Цена { get; set; }
-        public byte[] Изображение { get; set; }
+        public string Телефон { get; set; }
+        public Nullable<System.DateTime> Дата { get; set; }
+        public string Время { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Запись> Запись { get; set; }
+        public virtual Пользователь Пользователь { get; set; }
+        public virtual Услуги Услуги { get; set; }
     }
 }
